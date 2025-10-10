@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoinFlip - Digital Coin Flip Decision Maker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
+            box-sizing: border-box;
+        }
+        .hidden-title {
+            display: none;
+        }
+        .coin-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+        }
+        #coin {
+            width: 200px;
+            height: 200px;
+            background-image: url('heads.png');
+            background-size: cover;
+            cursor: pointer;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
+        #coin.flipping {
+            animation: flip 1s linear;
+        }
+        @keyframes flip {
+            0% { transform: rotateY(0deg); }
+            50% { transform: rotateY(900deg); }
+            100% { transform: rotateY(1800deg); }
+        }
+        #stats {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        .radio-buttons {
+            margin-bottom: 10px;
+        }
+        .stats-top {
+            margin-bottom: 20px;
+        }
+        .toggle-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .toggle-switch input {
+            display: none;
+        }
+        .toggle-switch label {
+            cursor: pointer;
+            width: 50px;
+            height: 25px;
+            background: #ccc;
+            display: block;
+            border-radius: 25px;
+            position: relative;
+        }
+        .toggle-switch label:after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 21px;
+            height: 21px;
+            background: #fff;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+        .toggle-switch input:checked + label {
+            background: #5555ff;
+        }
+        .toggle-switch input:checked + label:after {
+            left: calc(100% - 2px);
+            transform: translateX(-100%);
+        }
+        .dark-mode {
+            background-color: #333;
+            color: white;
+        }
+        .dark-mode #coin {
+            box-shadow: 0 0 10px rgba(255,255,255,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="toggle-switch">
+        <input type="checkbox" id="dark-mode-toggle">
+        <label for="dark-mode-toggle"></label>
+    </div>
+    <div class="hidden-title"><center><h1>Coin Flip</h1></center></div>
+    <div class="radio-buttons">
+        <input type="radio" id="heads" name="guess" value="heads" checked>
+        <label for="heads">Heads</label>
+        <input type="radio" id="tails" name="guess" value="tails">
+        <label for="tails">Tails</label>
+    </div>
+    <div class="stats-top">
+        <div id="stats">Correct: <span id="correct">0</span>/<span id="total">0</span> (<span id="percentage">0%</span>)</div>
+    </div>
+    <div class="coin-container">
+        <div id="coin"></div>
+    </div>
+    
+    <audio id="flipSound" src="coinflip.mp3"></audio>
+
+    <script>
+        const coin = document.getElementById('coin');
+        const correctSpan = document.getElementById('correct');
+        const totalSpan = document.getElementById('total');
+        const percentageSpan = document.getElementById('percentage');
+        const flipSound = document.getElementById('flipSound');
+        
+        let correct = 0;
+        let total = 0;
+        
+        coin.addEventListener('click', flipCoin);
+        
+        function flipCoin() {
+            if (coin.classList.contains('flipping')) return; // Prevent multiple clicks during animation
+            
+            coin.classList.add('flipping');
+            flipSound.play(); // Play the coin flip sound
+            
+            setTimeout(() => {
+                const result = Math.random() < 0.5 ? 'heads' : 'tails';
+                coin.style.backgroundImage = `url('${result}.png')`;
+                
+                const guess = document.querySelector('input[name="guess"]:checked').value;
+                
+                total++;
+                if (guess === result) {
+                    correct++;
+                }
+                
+                updateStats();
+                coin.classList.remove('flipping');
+            }, 1000);
+        }
+        
+        function updateStats() {
+            correctSpan.textContent = correct;
+            totalSpan.textContent = total;
+            const percentage = total === 0 ? 0 : (correct / total * 100).toFixed(1);
+            percentageSpan.textContent = percentage + '%';
+        }
+        
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const headsRadio = document.getElementById('heads');
+        const tailsRadio = document.getElementById('tails');
+        
+        // Save radio button selection
+        function saveGuessSelection() {
+            const selectedGuess = document.querySelector('input[name="guess"]:checked').value;
+            localStorage.setItem('coinGuess', selectedGuess);
+        }
+        
+        // Add event listeners to radio buttons
+        headsRadio.addEventListener('change', saveGuessSelection);
+        tailsRadio.addEventListener('change', saveGuessSelection);
+        
+        darkModeToggle.addEventListener('change', () => {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
+        });
+        
+        // Apply saved dark mode preference on page load
+        if (localStorage.getItem('darkMode') === 'true') {
+            document.body.classList.add('dark-mode');
+            darkModeToggle.checked = true;
+        }
+        
+        // Apply saved radio button selection on page load
+        const savedGuess = localStorage.getItem('coinGuess');
+        if (savedGuess === 'tails') {
+            tailsRadio.checked = true;
+        } else {
+            headsRadio.checked = true;
+        }
+    </script>
+</body>
+</html>
