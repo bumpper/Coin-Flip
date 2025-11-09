@@ -1,13 +1,13 @@
-# CoinFlip Tauri Application - Project Summary
+# coinflip Tauri Application - Project Summary
 
 ## Overview
 
-The CoinFlip HTML application has been successfully converted into a cross-platform desktop application using Tauri. This application can now be built as native installers for Windows, macOS, and Linux.
+The coinflip HTML application has been successfully converted into a cross-platform desktop application using Tauri. This application can now be built as native installers for Windows, macOS, and Linux.
 
 ## Project Structure
 
 ```
-CoinFlip/
+coinflip/
 ├── src/                          # Frontend assets
 │   ├── index.html               # Main application HTML
 │   ├── heads.png                # Heads coin image
@@ -51,12 +51,12 @@ All original features from the HTML application have been preserved:
 
 ### Windows
 - **Installers**: NSIS (.exe) and MSI (.msi)
-- **Install Path**: `%LOCALAPPDATA%\Programs\CoinFlip\` (NSIS) or `C:\Program Files\CoinFlip\` (MSI)
+- **Install Path**: `%LOCALAPPDATA%\Programs\coinflip\` (NSIS) or `C:\Program Files\coinflip\` (MSI)
 - **Requirements**: Windows 10/11, WebView2 Runtime
 
 ### macOS
 - **Installers**: DMG (.dmg) and App Bundle (.app)
-- **Install Path**: `/Applications/CoinFlip.app`
+- **Install Path**: `/Applications/coinflip.app`
 - **Requirements**: macOS 10.13 or later
 
 ### Linux
@@ -66,20 +66,20 @@ All original features from the HTML application have been preserved:
 
 ## Installation Directory Structure
 
-The application installs to a subdirectory called "CoinFlip" in the default location for each OS:
+The application installs to a subdirectory called "coinflip" in the default location for each OS:
 
 | Platform | Base Directory | Subdirectory | Full Path |
 |----------|---------------|--------------|-----------|
-| Windows (NSIS) | `%LOCALAPPDATA%\Programs\` | `CoinFlip\` | `%LOCALAPPDATA%\Programs\CoinFlip\` |
-| Windows (MSI) | `C:\Program Files\` | `CoinFlip\` | `C:\Program Files\CoinFlip\` |
-| macOS | `/Applications/` | `CoinFlip.app` | `/Applications/CoinFlip.app` |
+| Windows (NSIS) | `%LOCALAPPDATA%\Programs\` | `coinflip\` | `%LOCALAPPDATA%\Programs\coinflip\` |
+| Windows (MSI) | `C:\Program Files\` | `coinflip\` | `C:\Program Files\coinflip\` |
+| macOS | `/Applications/` | `coinflip.app` | `/Applications/coinflip.app` |
 | Linux | `/usr/bin/` | N/A | `/usr/bin/coinflip` |
 
 ## Quick Start
 
 ### 1. Install Dependencies
 ```bash
-cd CoinFlip
+cd coinflip
 npm install
 ```
 
@@ -98,12 +98,12 @@ npm run build
 After running `npm run build`, installers will be created in:
 
 ### Windows
-- `src-tauri/target/release/bundle/nsis/CoinFlip_1.0.0_x64-setup.exe`
-- `src-tauri/target/release/bundle/msi/CoinFlip_1.0.0_x64_en-US.msi`
+- `src-tauri/target/release/bundle/nsis/coinflip_1.0.0_x64-setup.exe`
+- `src-tauri/target/release/bundle/msi/coinflip_1.0.0_x64_en-US.msi`
 
 ### macOS
-- `src-tauri/target/release/bundle/dmg/CoinFlip_1.0.0_x64.dmg`
-- `src-tauri/target/release/bundle/macos/CoinFlip.app`
+- `src-tauri/target/release/bundle/dmg/coinflip_1.0.0_x64.dmg`
+- `src-tauri/target/release/bundle/macos/coinflip.app`
 
 ### Linux
 - `src-tauri/target/release/bundle/deb/coinflip_1.0.0_amd64.deb`

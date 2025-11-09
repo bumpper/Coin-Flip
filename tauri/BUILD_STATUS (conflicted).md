@@ -1,4 +1,4 @@
-# CoinFlip Build Status Report
+# coinflip Build Status Report
 
 ## Current Status: Build In Progress
 
@@ -18,18 +18,18 @@ Once the build completes successfully, you should find installers at:
 
 ### Windows Installers
 ```
-CoinFlip/src-tauri/target/release/bundle/
+coinflip/src-tauri/target/release/bundle/
 ├── nsis/
-│   └── CoinFlip_1.0.0_x64-setup.exe    (NSIS Installer)
+│   └── coinflip_1.0.0_x64-setup.exe    (NSIS Installer)
 └── msi/
-    └── CoinFlip_1.0.0_x64_en-US.msi    (MSI Installer)
+    └── coinflip_1.0.0_x64_en-US.msi    (MSI Installer)
 ```
 
 ## How to Check Build Status
 
 ### Option 1: Check for Target Directory
 ```bash
-cd CoinFlip/src-tauri
+cd coinflip/src-tauri
 dir target
 ```
 
@@ -50,7 +50,7 @@ The build will display a success message when complete, showing the paths to the
 ### 1. Verify Build Output
 Check that both installers were created:
 ```bash
-cd CoinFlip/src-tauri/target/release/bundle
+cd coinflip/src-tauri/target/release/bundle
 dir nsis
 dir msi
 ```
@@ -58,12 +58,12 @@ dir msi
 ### 2. Test NSIS Installer
 ```bash
 # Run the NSIS installer
-.\nsis\CoinFlip_1.0.0_x64-setup.exe
+.\nsis\coinflip_1.0.0_x64-setup.exe
 ```
 
 Expected behavior:
 - Installer window opens
-- Choose installation location (default: %LOCALAPPDATA%\Programs\CoinFlip\)
+- Choose installation location (default: %LOCALAPPDATA%\Programs\coinflip\)
 - Installation completes
 - Start Menu shortcut created
 - Desktop shortcut option available
@@ -81,12 +81,12 @@ After installation:
 ### 4. Test MSI Installer
 ```bash
 # Run the MSI installer (requires admin rights)
-.\msi\CoinFlip_1.0.0_x64_en-US.msi
+.\msi\coinflip_1.0.0_x64_en-US.msi
 ```
 
 Expected behavior:
 - Windows Installer dialog opens
-- Choose installation location (default: C:\Program Files\CoinFlip\)
+- Choose installation location (default: C:\Program Files\coinflip\)
 - Installation completes
 - Start Menu shortcut created
 
@@ -94,11 +94,11 @@ Expected behavior:
 Once verified, copy the installers to a distribution folder:
 ```bash
 # Create a distribution folder on Desktop
-mkdir C:\Users\Dan Neiderhiser\Desktop\CoinFlip-Installers
+mkdir C:\Users\Dan Neiderhiser\Desktop\coinflip-Installers
 
 # Copy installers
-copy src-tauri\target\release\bundle\nsis\CoinFlip_1.0.0_x64-setup.exe C:\Users\Dan Neiderhiser\Desktop\CoinFlip-Installers\
-copy src-tauri\target\release\bundle\msi\CoinFlip_1.0.0_x64_en-US.msi C:\Users\Dan Neiderhiser\Desktop\CoinFlip-Installers\
+copy src-tauri\target\release\bundle\nsis\coinflip_1.0.0_x64-setup.exe C:\Users\Dan Neiderhiser\Desktop\coinflip-Installers\
+copy src-tauri\target\release\bundle\msi\coinflip_1.0.0_x64_en-US.msi C:\Users\Dan Neiderhiser\Desktop\coinflip-Installers\
 ```
 
 ## Troubleshooting

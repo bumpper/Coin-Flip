@@ -1,4 +1,4 @@
-# CoinFlip Tauri Application - Completion Checklist
+# coinflip Tauri Application - Completion Checklist
 
 ## ✅ Project Setup Complete
 
@@ -24,7 +24,7 @@
 ### Configuration Complete
 - [x] Tauri 2.0 configured
 - [x] Window size set (600x700, resizable)
-- [x] App name: "CoinFlip"
+- [x] App name: "coinflip"
 - [x] Bundle identifier: "center.radius.coinflip"
 - [x] Version: 1.0.0
 - [x] Build targets configured: MSI, NSIS, DEB, RPM, DMG, APP
@@ -48,7 +48,7 @@
 - [ ] Install platform-specific dependencies (see SETUP.md)
 
 ### 2. Project Setup
-- [ ] Navigate to CoinFlip directory: `cd CoinFlip`
+- [ ] Navigate to coinflip directory: `cd coinflip`
 - [ ] Install Node dependencies: `npm install`
 - [ ] Verify Tauri CLI: `npx tauri --version`
 
@@ -72,7 +72,7 @@
 - [ ] Build Windows installers: `npm run build`
 - [ ] Test NSIS installer (.exe)
 - [ ] Test MSI installer (.msi)
-- [ ] Verify installation path: `%LOCALAPPDATA%\Programs\CoinFlip\`
+- [ ] Verify installation path: `%LOCALAPPDATA%\Programs\coinflip\`
 - [ ] Test application launch
 - [ ] Test uninstallation
 
@@ -80,7 +80,7 @@
 - [ ] Build macOS installers: `npm run build`
 - [ ] Test DMG installer
 - [ ] Test App bundle
-- [ ] Verify installation path: `/Applications/CoinFlip.app`
+- [ ] Verify installation path: `/Applications/coinflip.app`
 - [ ] Test application launch
 - [ ] Test uninstallation
 
@@ -113,17 +113,17 @@
 ## 🎯 Installation Paths Verification
 
 ### Windows
-- **NSIS**: `%LOCALAPPDATA%\Programs\CoinFlip\`
+- **NSIS**: `%LOCALAPPDATA%\Programs\coinflip\`
   - [ ] Verify path exists after installation
   - [ ] Check Start Menu shortcut
   - [ ] Check Desktop shortcut (if selected)
 
-- **MSI**: `C:\Program Files\CoinFlip\`
+- **MSI**: `C:\Program Files\coinflip\`
   - [ ] Verify path exists after installation
   - [ ] Check Start Menu shortcut
 
 ### macOS
-- **Path**: `/Applications/CoinFlip.app`
+- **Path**: `/Applications/coinflip.app`
   - [ ] Verify app bundle exists
   - [ ] Check Launchpad entry
   - [ ] Test from Spotlight
@@ -160,12 +160,12 @@ If application doesn't run:
 After successful build, verify these files exist:
 
 ### Windows
-- [ ] `src-tauri/target/release/bundle/nsis/CoinFlip_1.0.0_x64-setup.exe`
-- [ ] `src-tauri/target/release/bundle/msi/CoinFlip_1.0.0_x64_en-US.msi`
+- [ ] `src-tauri/target/release/bundle/nsis/coinflip_1.0.0_x64-setup.exe`
+- [ ] `src-tauri/target/release/bundle/msi/coinflip_1.0.0_x64_en-US.msi`
 
 ### macOS
-- [ ] `src-tauri/target/release/bundle/dmg/CoinFlip_1.0.0_x64.dmg`
-- [ ] `src-tauri/target/release/bundle/macos/CoinFlip.app`
+- [ ] `src-tauri/target/release/bundle/dmg/coinflip_1.0.0_x64.dmg`
+- [ ] `src-tauri/target/release/bundle/macos/coinflip.app`
 
 ### Linux
 - [ ] `src-tauri/target/release/bundle/deb/coinflip_1.0.0_amd64.deb`

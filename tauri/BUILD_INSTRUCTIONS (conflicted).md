@@ -1,6 +1,6 @@
-# Build Instructions for CoinFlip
+# Build Instructions for coinflip
 
-This document provides detailed instructions for building the CoinFlip application for different platforms.
+This document provides detailed instructions for building the coinflip application for different platforms.
 
 ## Quick Start
 
@@ -26,13 +26,13 @@ This document provides detailed instructions for building the CoinFlip applicati
 The build process will create two types of Windows installers:
 
 1. **NSIS Installer (.exe)** - Modern installer with custom UI
-   - Location: `src-tauri/target/release/bundle/nsis/CoinFlip_1.0.0_x64-setup.exe`
-   - Default install path: `%LOCALAPPDATA%\Programs\CoinFlip\` (per-user)
+   - Location: `src-tauri/target/release/bundle/nsis/coinflip_1.0.0_x64-setup.exe`
+   - Default install path: `%LOCALAPPDATA%\Programs\coinflip\` (per-user)
    - Features: Uninstaller, Start Menu shortcuts, Desktop shortcut option
 
 2. **MSI Installer (.msi)** - Windows Installer package
-   - Location: `src-tauri/target/release/bundle/msi/CoinFlip_1.0.0_x64_en-US.msi`
-   - Default install path: `C:\Program Files\CoinFlip\` (system-wide, requires admin)
+   - Location: `src-tauri/target/release/bundle/msi/coinflip_1.0.0_x64_en-US.msi`
+   - Default install path: `C:\Program Files\coinflip\` (system-wide, requires admin)
    - Features: Windows Installer database, Group Policy deployment support
 
 **Build Command:**
@@ -45,12 +45,12 @@ npm run build
 The build process creates:
 
 1. **DMG Image (.dmg)** - Disk image for distribution
-   - Location: `src-tauri/target/release/bundle/dmg/CoinFlip_1.0.0_x64.dmg`
+   - Location: `src-tauri/target/release/bundle/dmg/coinflip_1.0.0_x64.dmg`
    - Users drag the app to Applications folder
-   - Default install path: `/Applications/CoinFlip.app`
+   - Default install path: `/Applications/coinflip.app`
 
 2. **App Bundle (.app)** - macOS application bundle
-   - Location: `src-tauri/target/release/bundle/macos/CoinFlip.app`
+   - Location: `src-tauri/target/release/bundle/macos/coinflip.app`
    - Can be distributed directly or via DMG
 
 **Build Command:**
@@ -85,9 +85,9 @@ npm run build
 
 | Platform | Default Installation Path | Subdirectory |
 |----------|--------------------------|--------------|
-| Windows (NSIS) | `%LOCALAPPDATA%\Programs\` | `CoinFlip\` |
-| Windows (MSI) | `C:\Program Files\` | `CoinFlip\` |
-| macOS | `/Applications/` | `CoinFlip.app` |
+| Windows (NSIS) | `%LOCALAPPDATA%\Programs\` | `coinflip\` |
+| Windows (MSI) | `C:\Program Files\` | `coinflip\` |
+| macOS | `/Applications/` | `coinflip.app` |
 | Linux | `/usr/bin/` | `coinflip` (binary) |
 
 ## Cross-Platform Building
@@ -176,13 +176,13 @@ After building, test the installer:
 **Windows:**
 ```bash
 # Run the NSIS installer
-.\src-tauri\target\release\bundle\nsis\CoinFlip_1.0.0_x64-setup.exe
+.\src-tauri\target\release\bundle\nsis\coinflip_1.0.0_x64-setup.exe
 ```
 
 **macOS:**
 ```bash
 # Open the DMG
-open src-tauri/target/release/bundle/dmg/CoinFlip_1.0.0_x64.dmg
+open src-tauri/target/release/bundle/dmg/coinflip_1.0.0_x64.dmg
 ```
 
 **Linux (DEB):**

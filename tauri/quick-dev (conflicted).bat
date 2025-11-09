@@ -1,6 +1,6 @@
 @echo off
 echo ========================================
-echo CoinFlip - Quick Development Mode
+echo coinflip - Quick Development Mode
 echo ========================================
 echo.
 

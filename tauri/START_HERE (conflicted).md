@@ -1,4 +1,4 @@
-# 🎯 START HERE - CoinFlip Tauri Application
+# 🎯 START HERE - coinflip Tauri Application
 
 Welcome! Your coinflip.html has been successfully converted into a cross-platform desktop application using Tauri.
 
@@ -8,20 +8,20 @@ Welcome! Your coinflip.html has been successfully converted into a cross-platfor
 ✅ **All assets copied and configured** (HTML, images, audio)
 ✅ **Icons generated for all platforms**
 ✅ **Build configurations set up** for Windows, macOS, and Linux
-✅ **Installation paths configured** with "CoinFlip" subdirectory
+✅ **Installation paths configured** with "coinflip" subdirectory
 ✅ **Comprehensive documentation provided**
 
 ## 📁 Project Location
 
 Your new Tauri project is located at:
 ```
-C:\Users\Dan Neiderhiser\Desktop\CoinFlip\
+C:\Users\Dan Neiderhiser\Desktop\coinflip\
 ```
 
 ## 🚀 Quick Start (3 Steps)
 
 ### Step 1: Install Dependencies
-Open a terminal in the CoinFlip directory and run:
+Open a terminal in the coinflip directory and run:
 ```bash
 npm install
 ```
@@ -60,12 +60,12 @@ quick-build.bat
 After building, you'll have installers in `src-tauri/target/release/bundle/`:
 
 ### Windows
-- `nsis/CoinFlip_1.0.0_x64-setup.exe` - Modern installer
-- `msi/CoinFlip_1.0.0_x64_en-US.msi` - Windows Installer package
+- `nsis/coinflip_1.0.0_x64-setup.exe` - Modern installer
+- `msi/coinflip_1.0.0_x64_en-US.msi` - Windows Installer package
 
 ### macOS (when built on Mac)
-- `dmg/CoinFlip_1.0.0_x64.dmg` - Disk image
-- `macos/CoinFlip.app` - Application bundle
+- `dmg/coinflip_1.0.0_x64.dmg` - Disk image
+- `macos/coinflip.app` - Application bundle
 
 ### Linux (when built on Linux)
 - `deb/coinflip_1.0.0_amd64.deb` - Debian package
@@ -73,13 +73,13 @@ After building, you'll have installers in `src-tauri/target/release/bundle/`:
 
 ## 📍 Installation Paths
 
-The app installs to these locations with "CoinFlip" subdirectory:
+The app installs to these locations with "coinflip" subdirectory:
 
 | Platform | Installation Path |
 |----------|------------------|
-| Windows (NSIS) | `%LOCALAPPDATA%\Programs\CoinFlip\` |
-| Windows (MSI) | `C:\Program Files\CoinFlip\` |
-| macOS | `/Applications/CoinFlip.app` |
+| Windows (NSIS) | `%LOCALAPPDATA%\Programs\coinflip\` |
+| Windows (MSI) | `C:\Program Files\coinflip\` |
+| macOS | `/Applications/coinflip.app` |
 | Linux | `/usr/bin/coinflip` |
 
 ## 📚 Documentation Guide
@@ -187,7 +187,7 @@ To customize the application:
 
 ## 🚀 Ready to Build?
 
-1. Open terminal in the CoinFlip directory
+1. Open terminal in the coinflip directory
 2. Run: `npm install`
 3. Run: `npm run dev` (to test)
 4. Run: `npm run build` (to create installers)

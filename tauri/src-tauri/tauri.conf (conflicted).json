@@ -1,6 +1,6 @@
 {
   "$schema": "https://schema.tauri.app/config/2.0",
-  "productName": "CoinFlip",
+  "productName": "coinflip",
   "version": "1.0.0",
   "identifier": "center.radius.coinflip",
   "build": {
@@ -59,7 +59,7 @@
   "app": {
     "windows": [
       {
-        "title": "CoinFlip",
+        "title": "coinflip",
         "width": 600,
         "height": 700,
         "resizable": true,

@@ -1,6 +1,6 @@
-# CoinFlip Setup Guide
+# coinflip Setup Guide
 
-This guide will help you set up the development environment and build the CoinFlip application.
+This guide will help you set up the development environment and build the coinflip application.
 
 ## Prerequisites Check
 
@@ -66,7 +66,7 @@ sudo dnf install webkit2gtk4.1-devel \
 
 ### Step 1: Install Node Dependencies
 ```bash
-cd CoinFlip
+cd coinflip
 npm install
 ```
 
@@ -121,12 +121,12 @@ npm run build:linux
 ## Expected Build Output
 
 ### Windows
-- `src-tauri/target/release/bundle/nsis/CoinFlip_1.0.0_x64-setup.exe` (NSIS installer)
-- `src-tauri/target/release/bundle/msi/CoinFlip_1.0.0_x64_en-US.msi` (MSI installer)
+- `src-tauri/target/release/bundle/nsis/coinflip_1.0.0_x64-setup.exe` (NSIS installer)
+- `src-tauri/target/release/bundle/msi/coinflip_1.0.0_x64_en-US.msi` (MSI installer)
 
 ### macOS
-- `src-tauri/target/release/bundle/dmg/CoinFlip_1.0.0_x64.dmg` (DMG image)
-- `src-tauri/target/release/bundle/macos/CoinFlip.app` (App bundle)
+- `src-tauri/target/release/bundle/dmg/coinflip_1.0.0_x64.dmg` (DMG image)
+- `src-tauri/target/release/bundle/macos/coinflip.app` (App bundle)
 
 ### Linux
 - `src-tauri/target/release/bundle/deb/coinflip_1.0.0_amd64.deb` (Debian package)
@@ -138,9 +138,9 @@ The application installs to these default locations:
 
 | Platform | Path | Notes |
 |----------|------|-------|
-| Windows (NSIS) | `%LOCALAPPDATA%\Programs\CoinFlip\` | Per-user install |
-| Windows (MSI) | `C:\Program Files\CoinFlip\` | System-wide, requires admin |
-| macOS | `/Applications/CoinFlip.app` | Standard app location |
+| Windows (NSIS) | `%LOCALAPPDATA%\Programs\coinflip\` | Per-user install |
+| Windows (MSI) | `C:\Program Files\coinflip\` | System-wide, requires admin |
+| macOS | `/Applications/coinflip.app` | Standard app location |
 | Linux | `/usr/bin/coinflip` | Binary location |
 
 ## Testing the Application
@@ -159,14 +159,14 @@ npm run dev
 ### Production Testing
 
 **Windows:**
-1. Run the installer: `CoinFlip_1.0.0_x64-setup.exe`
+1. Run the installer: `coinflip_1.0.0_x64-setup.exe`
 2. Launch from Start Menu or Desktop shortcut
 3. Test all features
 4. Uninstall via Windows Settings
 
 **macOS:**
 1. Open the DMG file
-2. Drag CoinFlip.app to Applications
+2. Drag coinflip.app to Applications
 3. Launch from Applications folder
 4. Test all features
 5. Uninstall by moving to Trash

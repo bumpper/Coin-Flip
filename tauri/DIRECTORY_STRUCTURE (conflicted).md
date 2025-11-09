@@ -1,7 +1,7 @@
-# CoinFlip Project Directory Structure
+# coinflip Project Directory Structure
 
 ```
-CoinFlip/
+coinflip/
 │
 ├── 📄 START_HERE.md              ⭐ Begin here! Quick start guide
 ├── 📄 README.md                   Project overview and quick reference
@@ -104,16 +104,16 @@ After running `npm run build`, the following structure is created:
 src-tauri/target/release/bundle/
 │
 ├── 📁 nsis/                       Windows NSIS Installer
-│   └── 📦 CoinFlip_1.0.0_x64-setup.exe
+│   └── 📦 coinflip_1.0.0_x64-setup.exe
 │
 ├── 📁 msi/                        Windows MSI Installer
-│   └── 📦 CoinFlip_1.0.0_x64_en-US.msi
+│   └── 📦 coinflip_1.0.0_x64_en-US.msi
 │
 ├── 📁 dmg/                        macOS Disk Image
-│   └── 📦 CoinFlip_1.0.0_x64.dmg
+│   └── 📦 coinflip_1.0.0_x64.dmg
 │
 ├── 📁 macos/                      macOS App Bundle
-│   └── 📦 CoinFlip.app
+│   └── 📦 coinflip.app
 │
 ├── 📁 deb/                        Linux Debian Package
 │   └── 📦 coinflip_1.0.0_amd64.deb
@@ -128,25 +128,25 @@ After installation, the application is located at:
 
 ### Windows (NSIS)
 ```
-%LOCALAPPDATA%\Programs\CoinFlip\
-├── CoinFlip.exe
+%LOCALAPPDATA%\Programs\coinflip\
+├── coinflip.exe
 ├── resources/
 └── uninstall.exe
 ```
 
 ### Windows (MSI)
 ```
-C:\Program Files\CoinFlip\
-├── CoinFlip.exe
+C:\Program Files\coinflip\
+├── coinflip.exe
 └── resources/
 ```
 
 ### macOS
 ```
-/Applications/CoinFlip.app/
+/Applications/coinflip.app/
 ├── Contents/
 │   ├── MacOS/
-│   │   └── CoinFlip
+│   │   └── coinflip
 │   ├── Resources/
 │   └── Info.plist
 ```

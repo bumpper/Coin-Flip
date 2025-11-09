@@ -1,6 +1,6 @@
 @echo off
 echo ========================================
-echo CoinFlip - Quick Build Script
+echo coinflip - Quick Build Script
 echo ========================================
 echo.
 
@@ -56,7 +56,7 @@ echo Installers created in:
 echo   src-tauri\target\release\bundle\nsis\
 echo   src-tauri\target\release\bundle\msi\
 echo.
-echo NSIS Installer: CoinFlip_1.0.0_x64-setup.exe
-echo MSI Installer:  CoinFlip_1.0.0_x64_en-US.msi
+echo NSIS Installer: coinflip_1.0.0_x64-setup.exe
+echo MSI Installer:  coinflip_1.0.0_x64_en-US.msi
 echo.
 pause

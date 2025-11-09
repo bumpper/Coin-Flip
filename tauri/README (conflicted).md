@@ -1,4 +1,4 @@
-# CoinFlip - Digital Coin Flip Decision Maker
+# coinflip - Digital Coin Flip Decision Maker
 
 A desktop application for making decisions with a virtual coin flip. Built with Tauri for cross-platform support.
 
@@ -61,7 +61,7 @@ Before building the application, ensure you have the following installed:
 
 1. Navigate to the project directory:
    ```bash
-   cd CoinFlip
+   cd coinflip
    ```
 
 2. Install Node.js dependencies:
@@ -115,8 +115,8 @@ Output: `src-tauri/target/release/bundle/deb/` and `src-tauri/target/release/bun
 
 The application will be installed to the following default directories:
 
-- **Windows**: `C:\Program Files\CoinFlip\` or `%LOCALAPPDATA%\Programs\CoinFlip\`
-- **macOS**: `/Applications/CoinFlip.app`
+- **Windows**: `C:\Program Files\coinflip\` or `%LOCALAPPDATA%\Programs\coinflip\`
+- **macOS**: `/Applications/coinflip.app`
 - **Linux**: `/usr/bin/coinflip` (binary) and `/usr/share/applications/` (desktop entry)
 
 ## Cross-Platform Building
