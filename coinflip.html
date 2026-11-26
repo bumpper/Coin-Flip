@@ -83,19 +83,26 @@
         #coin {
             width: 200px;
             height: 200px;
-            background-image: url('heads.png');
-            background-size: cover;
+            position: relative;
             cursor: pointer;
             border-radius: 50%;
+            transform-style: preserve-3d;
+        }
+        .coin-face {
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background-size: cover;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
             box-shadow: 0 0 10px rgba(0,0,0,0.3);
         }
-        #coin.flipping {
-            animation: flip 1s linear;
+        .coin-face.front {
+            background-image: url('heads.png');
         }
-        @keyframes flip {
-            0% { transform: rotateY(0deg); }
-            50% { transform: rotateY(900deg); }
-            100% { transform: rotateY(1800deg); }
+        .coin-face.back {
+            background-image: url('tails.png');
+            transform: rotateY(180deg);
         }
         #stats {
             margin-bottom: 20px;
@@ -103,6 +110,51 @@
         }
         .radio-buttons {
             margin-bottom: 10px;
+            position: relative;
+            display: flex;
+            gap: 8px;
+        }
+        .radio-buttons input[type="radio"] {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            border: 0;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+        }
+        .radio-buttons label {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 25px;
+            box-sizing: border-box;
+            padding: 0 14px;
+            font-size: 13px;
+            font-weight: bold;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            color: #333;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .radio-buttons label:hover {
+            background-color: #e0e0e0;
+        }
+        .radio-buttons input:checked + label {
+            background-color: #5555ff;
+            border-color: #5555ff;
+            color: #fff;
+        }
+        .radio-buttons input:checked + label:hover {
+            background-color: #6666ff;
+        }
+        .radio-buttons input:focus-visible + label {
+            outline: 2px solid #5555ff;
+            outline-offset: 2px;
         }
         .stats-top {
             margin-bottom: 20px;
@@ -111,61 +163,73 @@
             position: absolute;
             top: 20px;
             right: 90px;
-        }
-        .toggle-switch input {
-            display: none;
-        }
-        .toggle-switch label {
-            cursor: pointer;
+            display: inline-block;
             width: 50px;
             height: 25px;
-            background: #ccc;
-            display: block;
+            background-color: #ccc;
             border-radius: 25px;
-            position: relative;
+            cursor: pointer;
         }
-        .toggle-switch label:after {
-            content: '';
+        .toggle-switch::before {
+            content: "";
             position: absolute;
             top: 2px;
             left: 2px;
             width: 21px;
             height: 21px;
-            background: #fff;
+            background-color: #fff;
             border-radius: 50%;
-            transition: 0.3s;
+            transition: transform 0.5s;
+            z-index: 1;
         }
-        .toggle-switch input:checked + label {
-            background: #5555ff;
+        .toggle-switch.active {
+            background-color: #5555ff;
         }
-        .toggle-switch input:checked + label:after {
-            left: calc(100% - 2px);
-            transform: translateX(-100%);
+        .toggle-switch.active::before {
+            transform: translateX(25px);
         }
+        .toggle-switch .mode-icon {
+            position: absolute;
+            top: 50%;
+            z-index: 0;
+            width: 12px;
+            height: 12px;
+            transform: translateY(-50%);
+            pointer-events: none;
+        }
+        .toggle-switch .sun { right: 6px; color: #ffd75e; }
+        .toggle-switch .moon { left: 6px; color: #ffffff; }
+        .toggle-switch:focus-visible { outline: 2px solid #5555ff; outline-offset: 2px; }
         .help-btn {
             position: absolute;
             top: 20px;
             right: 20px;
-            padding: 8px 16px;
+            height: 25px;
+            box-sizing: border-box;
+            padding: 0 14px;
+            margin: 0;
+            font-size: 13px;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             background-color: #f0f0f0;
             border: 1px solid #ccc;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 14px;
             text-decoration: none;
             color: #333;
             transition: background-color 0.3s;
-            /* display: none; */
         }
         .help-btn:hover {
             background-color: #e0e0e0;
         }
         .dark-mode .help-btn {
             background-color: #444;
-            color: white;
+            color: #fff;
             border: 1px solid #555;
-            border-top: 2px solid #666;
-            border-left: 2px solid #666;
+            border-top-color: #888;
+            border-left-color: #888;
         }
         .dark-mode .help-btn:hover {
             background-color: #555;
@@ -174,15 +238,34 @@
             background-color: #333;
             color: white;
         }
-        .dark-mode #coin {
+        .dark-mode .coin-face {
             box-shadow: 0 0 10px rgba(255,255,255,0.3);
+        }
+        .dark-mode .radio-buttons label {
+            background-color: #444;
+            color: #fff;
+            border: 1px solid #555;
+            border-top-color: #888;
+            border-left-color: #888;
+        }
+        .dark-mode .radio-buttons label:hover {
+            background-color: #555;
+        }
+        .dark-mode .radio-buttons input:checked + label {
+            background-color: #5555ff;
+            border-color: #5555ff;
+            border-top-color: #8888ff;
+            border-left-color: #8888ff;
+        }
+        .dark-mode .radio-buttons input:checked + label:hover {
+            background-color: #6666ff;
         }
     </style>
 </head>
 <body>
-    <div class="toggle-switch">
-        <input type="checkbox" id="dark-mode-toggle">
-        <label for="dark-mode-toggle"></label>
+    <div id="dark-mode-toggle" class="toggle-switch" role="switch" aria-checked="false" aria-label="Dark mode" tabindex="0">
+        <svg class="mode-icon sun" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.1" stroke-linecap="round"><path d="M8 1.4v1.4M8 13.2v1.4M1.4 8h1.4M13.2 8h1.4M3.1 3.1l1 1M11.9 11.9l1 1M12.9 3.1l-1 1M4.1 11.9l-1 1"/></g></svg>
+        <svg class="mode-icon moon" viewBox="0 0 16 16" aria-hidden="true"><path d="M13.4 9.7A5.7 5.7 0 0 1 6.3 2.6a5.8 5.8 0 1 0 7.1 7.1z" fill="currentColor"/></svg>
     </div>
     <a href="help.html" class="help-btn" title="Help Documentation" aria-label="Help Documentation">?</a>
 <div class="hidden-title"><center><h1>Coin Flip</h1></center></p></div>
@@ -196,13 +279,18 @@
         <div id="stats">Correct: <span id="correct">0</span>/<span id="total">0</span> (<span id="percentage">0%</span>)</div>
     </div>
     <div class="coin-container">
-        <div id="coin"></div>
+        <div id="coin">
+            <div class="coin-face front"></div>
+            <div class="coin-face back"></div>
+        </div>
     </div>
     
     <audio id="flipSound" src="coinflip.mp3"></audio>
 
     <script>
         const coin = document.getElementById('coin');
+        const frontFace = coin.querySelector('.coin-face.front');
+        const backFace = coin.querySelector('.coin-face.back');
         const correctSpan = document.getElementById('correct');
         const totalSpan = document.getElementById('total');
         const percentageSpan = document.getElementById('percentage');
@@ -210,29 +298,160 @@
         
         let correct = 0;
         let total = 0;
+        let isFlipping = false;
+        let offsetX = 0;
+        let offsetY = 0;
+        let currentAnimation = null;
+        let currentSpin = 0;
+        let currentStartRot = 0;
+        let currentStartTilt = 0;
+        let currentDuration = 0;
         
         coin.addEventListener('click', flipCoin);
         
+        function settle(result) {
+            const other = result === 'heads' ? 'tails' : 'heads';
+            frontFace.style.backgroundImage = `url('${result}.png')`;
+            backFace.style.backgroundImage = `url('${other}.png')`;
+            
+            const guess = document.querySelector('input[name="guess"]:checked').value;
+            
+            total++;
+            if (guess === result) {
+                correct++;
+            }
+            
+            updateStats();
+            isFlipping = false;
+        }
+        
         function flipCoin() {
-            if (coin.classList.contains('flipping')) return; // Prevent multiple clicks during animation
-            
-            coin.classList.add('flipping');
-            flipSound.play(); // Play the coin flip sound
-            
-            setTimeout(() => {
-                const result = Math.random() < 0.5 ? 'heads' : 'tails';
-                coin.style.backgroundImage = `url('${result}.png')`;
-                
-                const guess = document.querySelector('input[name="guess"]:checked').value;
-                
-                total++;
-                if (guess === result) {
-                    correct++;
+            let startRot = 0;
+            let startTilt = 0;
+            if (isFlipping) {
+                if (!currentAnimation) return; // Reduced-motion flip already settling
+                // Flick the coin mid-flight: keep where it is and how fast it spins
+                const progress = Math.min(currentAnimation.currentTime / currentDuration, 1);
+                startRot = currentStartRot + (currentSpin - currentStartRot) * progress;
+                startTilt = currentStartTilt * (1 - progress) + 9 * (1 - progress) * Math.sin(Math.PI * 4 * progress);
+                const liveTransform = getComputedStyle(coin).transform;
+                if (liveTransform && liveTransform !== 'none') {
+                    const matrix = new DOMMatrixReadOnly(liveTransform);
+                    offsetX = matrix.m41;
+                    offsetY = matrix.m42;
                 }
-                
-                updateStats();
-                coin.classList.remove('flipping');
-            }, 1000);
+                currentAnimation.cancel();
+                currentAnimation = null;
+                coin.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+            }
+            
+            isFlipping = true;
+            flipSound.currentTime = 0;
+            const playing = flipSound.play(); // Play the coin flip sound
+            if (playing && playing.catch) playing.catch(() => {});
+            
+            const result = Math.random() < 0.5 ? 'heads' : 'tails';
+            
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                setTimeout(() => settle(result), 300);
+                return;
+            }
+            
+            const rect = coin.getBoundingClientRect();
+            const margin = 24;
+            const vw = document.documentElement.clientWidth;
+            const vh = document.documentElement.clientHeight;
+            // Pick a random resting spot anywhere on screen, kept fully in view
+            const targetX = margin + Math.random() * Math.max(vw - 2 * margin - rect.width, 0);
+            const targetY = margin + 60 + Math.random() * Math.max(vh - 2 * margin - rect.height - 60, 0);
+            const dx = targetX - rect.left;
+            const dy = targetY - rect.top;
+            
+            // Toss high enough that the coin always falls down onto the target
+            const clearance = 70 + Math.random() * 60;
+            const launch = Math.min(Math.max(vh * 0.3, 40), Math.max(rect.top - margin, 0));
+            const apexY = Math.max(Math.min(rect.top - launch, targetY - clearance), margin);
+            
+            const startX = offsetX;
+            const startY = offsetY;
+            
+            // Ballistic flight with gravity and decaying bounces, sampled
+            // densely so both the path and the spin stay perfectly smooth
+            const gravity = 1800;
+            const restitution = 0.33;
+            const friction = 0.82;
+            const step = 1 / 120;
+            const ys = [0];
+            const xs = [0];
+            let y = 0;
+            let vy = -Math.sqrt(2 * gravity * Math.max(rect.top - apexY, 0));
+            let x = 0;
+            let vx = 1;
+            let t = 0;
+            let hops = 0;
+            let settled = false;
+            
+            while (!settled && t < 6) {
+                vy += gravity * step;
+                y += vy * step;
+                x += vx * step;
+                t += step;
+                if (vy > 0 && y >= dy) {
+                    y = dy;
+                    const impact = Math.abs(vy);
+                    vy = -impact * restitution;
+                    vx *= friction;
+                    hops++;
+                    const nextHop = Math.pow(impact * restitution, 2) / (2 * gravity);
+                    if (nextHop < 1 || hops >= 5) settled = true;
+                }
+                ys.push(y);
+                xs.push(x);
+            }
+            
+            // Short roll to a stop, continuing at the speed of the last bounce
+            const rollTime = 0.3;
+            const decel = vx / rollTime;
+            const rollSteps = Math.ceil(rollTime / step);
+            const lastX = xs[xs.length - 1];
+            for (let i = 1; i <= rollSteps; i++) {
+                const rt = Math.min(i * step, rollTime);
+                xs.push(lastX + vx * rt - 0.5 * decel * rt * rt);
+                ys.push(dy);
+            }
+            
+            const flightTime = t + rollSteps * step;
+            // Constant spin rate (~4.4 turns/s) ending on a whole turn, so a
+            // flicked coin keeps spinning seamlessly and never snaps at the end
+            const spin = 360 * Math.max(
+                Math.ceil((startRot + 1440) / 360),
+                Math.round((startRot + flightTime * 1600) / 360)
+            );
+            const scale = dx / xs[xs.length - 1];
+            const frames = ys.map((frameY, i) => {
+                const p = i / (ys.length - 1);
+                const angle = startRot + (spin - startRot) * p;
+                const tilt = startTilt * (1 - p) + 9 * (1 - p) * Math.sin(Math.PI * 4 * p);
+                return {
+                    offset: p,
+                    transform: `perspective(900px) translate(${startX + xs[i] * scale}px, ${startY + frameY}px) rotateY(${angle}deg) rotateZ(${tilt}deg)`
+                };
+            });
+            
+            const animation = coin.animate(frames, { duration: flightTime * 1000, easing: 'linear', fill: 'forwards' });
+            currentAnimation = animation;
+            currentSpin = spin;
+            currentStartRot = startRot;
+            currentStartTilt = startTilt;
+            currentDuration = flightTime * 1000;
+            animation.onfinish = () => {
+                currentAnimation = null;
+                offsetX = startX + dx;
+                offsetY = startY + dy;
+                coin.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
+                animation.cancel();
+                settle(result);
+            };
         }
         
         function updateStats() {
@@ -256,16 +475,26 @@
         headsRadio.addEventListener('change', saveGuessSelection);
         tailsRadio.addEventListener('change', saveGuessSelection);
         
-        darkModeToggle.addEventListener('change', () => {
-            document.body.classList.toggle('dark-mode');
+        function applyToggleState(dark) {
+            document.body.classList.toggle('dark-mode', dark);
+            darkModeToggle.classList.toggle('active', dark);
+            darkModeToggle.setAttribute('aria-checked', dark ? 'true' : 'false');
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            applyToggleState(!document.body.classList.contains('dark-mode'));
             localStorage.setItem('darkMode', document.body.classList.contains('dark-mode'));
         });
-        
+
+        darkModeToggle.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                darkModeToggle.click();
+            }
+        });
+
         // Apply saved dark mode preference on page load
-        if (localStorage.getItem('darkMode') === 'true') {
-            document.body.classList.add('dark-mode');
-            darkModeToggle.checked = true;
-        }
+        applyToggleState(localStorage.getItem('darkMode') === 'true');
         
         // Apply saved radio button selection on page load
         const savedGuess = localStorage.getItem('coinGuess');
